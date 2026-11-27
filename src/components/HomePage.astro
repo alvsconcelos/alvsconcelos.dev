@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, type Copy, type Locale } from '../content/copy';
+
+interface Props {
+  locale: Locale;
+  copy: Copy;
+}
+
+const { locale, copy } = Astro.props;
+---
+
+<Layout locale={locale} copy={copy}>
+  <main id="content" class="wrap"><div class="page">
+    <section class="hero" aria-labelledby="hero-name">
+      <img
+        class="portrait"
+        src={site.image}
+        alt={copy.hero.photoAlt}
+        width="88"
+        height="88"
+      />
+      <div class="hero-copy">
+        <h1 id="hero-name">{site.name}</h1>
+        <p class="role">{copy.hero.role}</p>
+        <p class="lede">{copy.hero.lede}</p>
+        <p class="location">{copy.hero.location}</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#contact">{copy.hero.contactCta}</a>
+          <a class="btn btn-secondary" href="#resume">{copy.hero.resumeCta}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <h2 class="section-label" id="about-heading">{copy.about.heading}</h2>
+      {copy.about.paragraphs.map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <h2 class="section-label" id="experience-heading">{copy.experience.heading}</h2>
+      {copy.experience.companies.map((company) => (
+        <article class="company">
+          <div class="company-head">
+            <h3>{company.name}</h3>
+            {company.location && <p class="company-loc">{company.location}</p>}
+          </div>
+          {company.roles.map((role) => (
+            <div class="role-block">
+              <div class="role-head">
+                <h4>{role.title}</h4>
+                <p class="dates">{role.dates}</p>
+              </div>
+              <ul>
+                {role.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+          ))}
+        </article>
+      ))}
+    </section>
+
+    <section class="section" id="open-source" aria-labelledby="oss-heading">
+      <h2 class="section-label" id="oss-heading">{copy.openSource.heading}</h2>
+      <p>{copy.openSource.intro}</p>
+      <div class="projects">
+        {copy.openSource.projects.map((project) => (
+          <article class="project">
+            <h3>{project.name}</h3>
+            <p class="project-meta">
+              {project.role} · {project.dates}
+            </p>
+            <p>{project.description}</p>
+            <p class="stats">{project.stats}</p>
+            <p class="project-links">
+              <a href={project.site.href} rel="noopener noreferrer">{project.site.label}</a>
+              <a href={project.code.href} rel="noopener noreferrer">{project.code.label}</a>
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="ai" aria-labelledby="ai-heading">
+      <h2 class="section-label" id="ai-heading">{copy.ai.heading}</h2>
+      {copy.ai.paragraphs.map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="section" id="resume" aria-labelledby="resume-heading">
+      <h2 class="section-label" id="resume-heading">{copy.resume.heading}</h2>
+      <p>{copy.resume.intro}</p>
+      <ul class="download-list">
+        <li>
+          <a href="/Alvaro-Vasconcelos-Resume-EN.pdf">
+            <span>{copy.resume.enLabel}</span>
+            <span class="meta">{copy.resume.enMeta}</span>
+          </a>
+        </li>
+        <li>
+          <a href="/Alvaro-Vasconcelos-Curriculo-PT.pdf">
+            <span>{copy.resume.ptLabel}</span>
+            <span class="meta">{copy.resume.ptMeta}</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <h2 class="section-label" id="contact-heading">{copy.contact.heading}</h2>
+      <p>{copy.contact.intro}</p>
+      <ul class="contact-list">
+        <li>
+          <span>{copy.contact.emailLabel}</span>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          <span>{copy.contact.linkedinLabel}</span>
+          <a href={site.linkedin} rel="noopener noreferrer">linkedin.com/in/alvsconcelos</a>
+        </li>
+        <li>
+          <span>{copy.contact.githubLabel}</span>
+          <a href={site.github} rel="noopener noreferrer">github.com/alvsconcelos</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  </main>
+</Layout>

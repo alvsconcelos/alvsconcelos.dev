@@ -1,0 +1,9 @@
+Options -Indexes
+DirectoryIndex index.html
+DirectorySlash On
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Previous site used /en for the English page. English is now the default.
+  RewriteRule ^en/?$ / [R=301,L]
+</IfModule>
