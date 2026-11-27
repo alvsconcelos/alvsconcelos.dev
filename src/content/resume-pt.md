@@ -16,7 +16,7 @@ Engineering Manager com mais de 12 anos construindo para a web, 100% remoto para
 - Redesenhei a forma como o time trabalha com IA: criei as regras compartilhadas, skills reutilizáveis de agentes e fluxos de merge request e revisão assistidos por IA, usados no dia a dia com Claude Code e Cursor.
 - Lidero a iniciativa de padronizar componentes para que agentes de IA gerem e revisem páginas de marketing com segurança, e para tornar o site legível e utilizável por agentes de IA.
 - Criei uma plataforma self-service de landing pages com ambientes de preview isolados, para o marketing lançar páginas de campanha sem depender da engenharia.
-- Arquitetei a reformulação da experiência de preços, dividindo a entrega entre 5 engenheiros, e sou responsável pela iniciativa de resiliência de produção criada após um incidente crítico.
+- Arquitetei a reformulação da experiência de preços, dividindo a entrega entre 5 engenheiros, e lidero a iniciativa de resiliência de produção da plataforma web.
 
 ### Staff WordPress Developer
 

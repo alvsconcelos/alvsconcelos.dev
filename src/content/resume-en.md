@@ -16,7 +16,7 @@ Engineering Manager with 12+ years building for the web, working fully remote fo
 - Redesigned how the team builds with AI: created the shared rules, reusable agent skills and AI-assisted merge-request and review workflows used day to day with Claude Code and Cursor.
 - Lead the initiative to standardize components so AI agents can safely generate and review marketing pages, and to make the site readable and usable by AI agents.
 - Created a self-serve landing page platform with isolated preview environments, so marketing can launch campaign pages without engineering in the loop.
-- Architected the pricing experience revamp, splitting the work across 5 engineers, and own the production resilience initiative started after a critical incident.
+- Architected the pricing experience revamp, splitting the work across 5 engineers, and lead the web platform's production resilience initiative.
 
 ### Staff WordPress Developer
 
