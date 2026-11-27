@@ -14,6 +14,7 @@ export default defineConfig({
           pt: 'pt-BR',
         },
       },
+      filter: (page) => !page.includes('/en'),
     }),
   ],
   i18n: {

@@ -1,0 +1,57 @@
+---
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/newsreader/opsz.css';
+import '../styles/global.css';
+import { site } from '../content/copy';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  noindex?: boolean;
+  refreshTo?: string;
+}
+
+const { title, description, canonical, noindex = false, refreshTo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {refreshTo && <meta http-equiv="refresh" content={`0; url=${refreshTo}`} />}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#F6F3EE" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/">{site.name}</a>
+        <div class="lang" aria-label="Language">
+          <a href="/" lang="en">EN</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <a href="/pt/" lang="pt-BR">PT</a>
+        </div>
+      </div>
+    </header>
+    <main id="content" class="wrap">
+      <div class="page">
+        <section class="section simple-page">
+          <slot />
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p>© {new Date().getFullYear()} {site.name}</p>
+        <p><a href="/">alvsconcelos.dev</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

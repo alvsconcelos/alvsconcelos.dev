@@ -20,9 +20,23 @@ npm run build
 npm run preview
 ```
 
-Static output is written to `dist/`. To deploy, upload the contents of `dist/` to the Hostinger `public_html` folder. A `.htaccess` in `public/` is copied into `dist/` and redirects the old `/en` path to `/`. `/pt/` is a real directory (`pt/index.html`), so Apache/LiteSpeed should serve it without extra rewrite rules.
+Static output is written to `dist/`.
+
+## GitHub Pages
+
+The site is set up to deploy from the `main` branch with `.github/workflows/deploy.yml` (`withastro/action` + `actions/deploy-pages`).
+
+After the repository exists on GitHub:
+
+1. Push `main`.
+2. In the repo, open **Settings → Pages**. Set the source to **GitHub Actions**.
+3. Add the custom domain `alvsconcelos.dev` and wait for DNS and HTTPS. Verify the domain if GitHub offers it.
+4. Point DNS at GitHub Pages (apex `A`/`AAAA` records and `www` `CNAME` to `alvsconcelos.github.io`). Keep mail records separate so email is not dropped when leaving Hostinger.
+
+`public/CNAME` contains `alvsconcelos.dev`. The old `/en` path is a static page that canonicalizes and redirects to `/`.
 
 ## Assets
 
 - Resumes: `public/Alvaro-Vasconcelos-Resume-EN.pdf` and `public/Alvaro-Vasconcelos-Curriculo-PT.pdf`
 - Open Graph images: regenerate with `python3 scripts/generate-og.py`
+- LLM-oriented index: `public/llms.txt` and `public/llms-full.txt`

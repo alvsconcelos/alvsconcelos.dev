@@ -1,0 +1,149 @@
+# Alvaro Vasconcelos — full site text
+
+This is the plain-text content of https://alvsconcelos.dev/ (English) and https://alvsconcelos.dev/pt/ (Portuguese). Contact: contact@alvsconcelos.dev. LinkedIn: https://www.linkedin.com/in/alvsconcelos/. GitHub: https://github.com/alvsconcelos.
+
+---
+
+# English
+
+Alvaro Vasconcelos
+Engineering Manager at Housecall Pro
+
+From Brazil, I lead a remote engineering team for a US company. I stay close to the code, and I care most about the platforms and ways of working that other people depend on.
+
+## What I do
+
+Lead engineering teams
+I lead a team of 6 engineers on housecallpro.com, working with US stakeholders. I set technical direction, design the work, and stay in the architecture and the code review.
+
+Build web platforms
+I build the foundations other people ship on, from experimentation and self-serve marketing pages to the delivery pipeline behind them.
+
+Make teams AI-native
+I design the shared rules, agent skills and review workflows my team uses every day, so AI gives us more room for judgment instead of replacing it.
+
+## Selected work
+
+### Payments for four Latin American countries
+I built in-house payment integrations when the off-the-shelf connectors could not be trusted in those markets. They still process payments today.
+
+The problem: At Genera, the ready-made payment connectors available to us did not work well enough for Brazil, Argentina, Uruguay and Chile. It was not a problem a plugin could solve.
+
+What I did: I designed and built the payment infrastructure from scratch, with direct integrations to Pagar.me, PayU and PayPal, instead of depending on those third-party connectors.
+
+The outcome: The solution I put in place still processes the company's payments today.
+
+### Two WooCommerce plugins, still maintained
+A shipping calculator that asks only for a Brazilian postal code, and a way to add several products to the cart from a single link.
+
+The problem: A common point of friction in Brazilian checkout is asking shoppers for country, state and city just to calculate shipping. I also kept running into a native WooCommerce limit: the add-to-cart URL could not take more than one product at a time.
+
+What I did: I built and still maintain two open-source plugins. One lets the shopper type only their postal code (CEP), auto-detects the state across all 27 Brazilian states, and hides the country, state and city fields. The other extends the native add-to-cart URL so a single link can add several products with quantities, which is useful for campaigns, bundles and quote-to-cart flows, and needs no configuration. I also contribute Brazilian Portuguese translations to WordPress.
+
+The outcome: The shipping plugin peaked at 2,000+ active installs on WordPress.org and has nearly 20,000 downloads. The cart plugin has 200+ active installs and a 5-star rating.
+
+Links:
+- https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/
+- https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil
+- https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/
+- https://github.com/alvsconcelos/add-multiple-product-wc-cart
+
+### How the team works with AI
+I redesigned our day-to-day around shared rules, reusable agent skills and AI-assisted review, not around a one-off tool rollout.
+
+The problem: AI is only useful to a team if it becomes a shared practice, with room for judgment, rather than something each person improvises or treats as a replacement for engineering.
+
+What I did: I designed the shared rules, reusable agent skills, and AI-assisted merge-request and review workflows we use every day with Cursor, Claude Code and Gemini. I also brought AI-assisted development into the codebase and set the conventions the team adopted.
+
+The outcome: This is how the team works today: the rules, skills and review flow are part of the daily practice, not a side experiment.
+
+### A platform agents can build on safely
+I am leading the work to standardize our marketing building blocks so AI agents can generate and review pages without cutting corners.
+
+The problem: If agents are going to help ship marketing pages, they need a platform with clear components, and a site they can actually read and review. Without that, the work is hard to trust.
+
+What I did: I am leading the effort to standardize those components so agents can generate and review marketing pages safely, and to make the site itself readable and usable by AI agents.
+
+The outcome: This is ongoing work on the platform behind housecallpro.com, alongside the team I lead.
+
+## Now
+
+On the web platform behind housecallpro.com, I am focused on making the way we work something AI agents can build and review safely, and on production resilience.
+
+## Resume
+
+- https://alvsconcelos.dev/Alvaro-Vasconcelos-Resume-EN.pdf
+- https://alvsconcelos.dev/Alvaro-Vasconcelos-Curriculo-PT.pdf
+
+---
+
+# Português
+
+Alvaro Vasconcelos
+Engineering Manager na Housecall Pro
+
+Do Brasil, lidero um time de engenharia remoto para uma empresa dos EUA. Continuo perto do código, e o que mais me importa são as plataformas e as formas de trabalhar das quais as outras pessoas dependem.
+
+## O que eu faço
+
+Lidero times de engenharia
+Lidero um time de 6 engenheiros no housecallpro.com, com stakeholders nos EUA. Defino a direção técnica, desenho o trabalho e sigo presente na arquitetura e no code review.
+
+Construo plataformas web
+Construo as bases sobre as quais outras pessoas entregam, da experimentação e das landing pages self-service ao pipeline de entrega por trás delas.
+
+Torno os times AI-native
+Desenho as regras compartilhadas, as skills de agentes e os fluxos de revisão que meu time usa no dia a dia, para que a IA abra mais espaço para o julgamento em vez de substituí-lo.
+
+## Trabalhos selecionados
+
+### Pagamentos em quatro países da América Latina
+Criei integrações próprias de pagamento quando os conectores prontos não eram confiáveis nesses mercados. Elas ainda processam os pagamentos hoje.
+
+O problema: Na Genera, os conectores de pagamento prontos que tínhamos à disposição não funcionavam bem o suficiente para Brasil, Argentina, Uruguai e Chile. Não era um problema que se resolvesse com um plugin.
+
+O que eu fiz: Arquitetei e desenvolvi a infraestrutura de pagamentos do zero, com integrações diretas com Pagar.me, PayU e PayPal, em vez de depender daqueles conectores de terceiros.
+
+O resultado: A solução que coloquei no lugar ainda processa os pagamentos da empresa hoje.
+
+### Dois plugins de WooCommerce, ainda em manutenção
+Um cálculo de frete que pede só o CEP brasileiro, e uma forma de adicionar vários produtos ao carrinho a partir de um único link.
+
+O problema: Um atrito comum no checkout brasileiro é pedir país, estado e cidade só para calcular o frete. Eu também esbarrava numa limitação nativa do WooCommerce: a URL de adicionar ao carrinho não aceitava mais de um produto de cada vez.
+
+O que eu fiz: Criei e sigo mantendo dois plugins open source. Um permite que o cliente digite só o CEP, identifica automaticamente o estado nas 27 UFs e esconde os campos de país, estado e cidade. O outro amplia a URL nativa de adicionar ao carrinho para que um único link acrescente vários produtos com suas quantidades, o que serve para campanhas, kits e orçamentos que viram carrinho, e funciona sem configuração. Também contribuo com traduções do WordPress para o português.
+
+O resultado: O plugin de frete chegou a mais de 2.000 instalações ativas no WordPress.org e tem quase 20 mil downloads. O plugin de carrinho tem mais de 200 instalações ativas e nota 5 estrelas.
+
+Links:
+- https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/
+- https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil
+- https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/
+- https://github.com/alvsconcelos/add-multiple-product-wc-cart
+
+### Como o time trabalha com IA
+Redesenhei o dia a dia em torno de regras compartilhadas, skills reutilizáveis de agentes e revisão assistida por IA, e não em torno de uma ferramenta isolada.
+
+O problema: IA só é útil para um time se vira uma prática compartilhada, com espaço para julgamento, e não algo que cada pessoa improvisa ou trata como substituto da engenharia.
+
+O que eu fiz: Desenhei as regras compartilhadas, as skills reutilizáveis de agentes e os fluxos de merge request e revisão assistidos por IA que usamos no dia a dia com Cursor, Claude Code e Gemini. Também trouxe o desenvolvimento assistido por IA para a base de código e defini as convenções que o time adotou.
+
+O resultado: É assim que o time trabalha hoje: as regras, as skills e o fluxo de revisão fazem parte da prática diária, não de um experimento à parte.
+
+### Uma plataforma em que agentes constroem com segurança
+Lidero o trabalho de padronizar os blocos das páginas de marketing para que agentes de IA gerem e revisem páginas sem abrir mão da qualidade.
+
+O problema: Se agentes vão ajudar a publicar páginas de marketing, eles precisam de uma plataforma com componentes claros, e de um site que consigam ler e revisar. Sem isso, o trabalho fica difícil de confiar.
+
+O que eu fiz: Lidero a padronização desses componentes para que agentes gerem e revisem páginas de marketing com segurança, e o trabalho de tornar o site legível e utilizável por agentes de IA.
+
+O resultado: É um trabalho em andamento na plataforma por trás do housecallpro.com, junto do time que eu lidero.
+
+## Agora
+
+Na plataforma web por trás do housecallpro.com, meu foco é tornar a forma como trabalhamos algo que agentes de IA consigam construir e revisar com segurança, e a resiliência de produção.
+
+## Currículo
+
+- https://alvsconcelos.dev/Alvaro-Vasconcelos-Resume-EN.pdf
+- https://alvsconcelos.dev/Alvaro-Vasconcelos-Curriculo-PT.pdf

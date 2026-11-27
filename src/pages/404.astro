@@ -1,0 +1,18 @@
+---
+import SimplePage from '../layouts/SimplePage.astro';
+import { site } from '../content/copy';
+---
+
+<SimplePage
+  title="Page not found — Alvaro Vasconcelos"
+  description="This page does not exist."
+  canonical={new URL('/404', site.url).href}
+  noindex={true}
+>
+  <h1>Page not found</h1>
+  <p>This page does not exist. / Esta página não existe.</p>
+  <p class="simple-actions">
+    <a class="btn btn-primary" href="/">English home</a>
+    <a class="btn btn-secondary" href="/pt/">Página inicial em português</a>
+  </p>
+</SimplePage>

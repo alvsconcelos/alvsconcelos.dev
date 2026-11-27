@@ -1,0 +1,21 @@
+# Alvaro Vasconcelos
+
+> Engineering Manager at Housecall Pro. Based in Brazil, working remotely with US teams. I build web platforms and the AI-native engineering teams that ship them.
+
+- [English site](https://alvsconcelos.dev/): Personal site, English
+- [Site in Portuguese](https://alvsconcelos.dev/pt/): Personal site, Portuguese (pt-BR)
+- [Resume (English, PDF)](https://alvsconcelos.dev/Alvaro-Vasconcelos-Resume-EN.pdf)
+- [Currículo (português, PDF)](https://alvsconcelos.dev/Alvaro-Vasconcelos-Curriculo-PT.pdf)
+- [Full text](https://alvsconcelos.dev/llms-full.txt): Complete site content in English and Portuguese, including selected-work case details
+- [LinkedIn](https://www.linkedin.com/in/alvsconcelos/)
+- [GitHub](https://github.com/alvsconcelos)
+
+## Facts
+
+- Role: Engineering Manager at Housecall Pro, leading a team of 6 engineers on the web platform behind housecallpro.com
+- Previously: Staff WordPress Developer, then Senior WordPress Developer, at Housecall Pro (joined as Senior in 2024, promoted to Staff, then to Engineering Manager)
+- Before Housecall Pro: Technical Lead and Software Engineer at Genera
+- Location: Brazil, working with US teams, fluent in English
+- 12+ years building for the web
+- Open source: maintainer of two WooCommerce plugins on WordPress.org (shipping-by-CEP plugin peaked at 2,000+ active installs and has nearly 20,000 downloads; add-multiple-products-to-cart plugin has 200+ active installs and a 5-star rating)
+- Contact: contact@alvsconcelos.dev

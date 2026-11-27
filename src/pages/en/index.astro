@@ -1,0 +1,20 @@
+---
+import SimplePage from '../../layouts/SimplePage.astro';
+import { site } from '../../content/copy';
+
+const home = new URL('/', site.url).href;
+---
+
+<SimplePage
+  title="Alvaro Vasconcelos — Engineering Manager at Housecall Pro"
+  description="The English site has moved to the homepage."
+  canonical={home}
+  noindex={true}
+  refreshTo="/"
+>
+  <h1>This page has moved</h1>
+  <p>The English site is now at the homepage.</p>
+  <p class="simple-actions">
+    <a class="btn btn-primary" href="/">Continue to alvsconcelos.dev</a>
+  </p>
+</SimplePage>

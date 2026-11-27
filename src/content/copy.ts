@@ -170,7 +170,7 @@ export const copy: Record<Locale, Copy> = {
     },
     now: {
       heading: 'Now',
-      text: 'On the web platform behind housecallpro.com, I am focused on making the way we work something AI agents can build and review safely, and on the production resilience work we started after a critical incident.',
+      text: 'On the web platform behind housecallpro.com, I am focused on making the way we work something AI agents can build and review safely, and on production resilience.',
     },
     resume: {
       heading: 'Resume',
@@ -300,7 +300,7 @@ export const copy: Record<Locale, Copy> = {
     },
     now: {
       heading: 'Agora',
-      text: 'Na plataforma web por trás do housecallpro.com, meu foco é tornar a forma como trabalhamos algo que agentes de IA consigam construir e revisar com segurança, e o trabalho de resiliência de produção que começamos depois de um incidente crítico.',
+      text: 'Na plataforma web por trás do housecallpro.com, meu foco é tornar a forma como trabalhamos algo que agentes de IA consigam construir e revisar com segurança, e a resiliência de produção.',
     },
     resume: {
       heading: 'Currículo',
