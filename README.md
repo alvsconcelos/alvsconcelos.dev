@@ -20,7 +20,7 @@ npm run build
 npm run preview
 ```
 
-Static output is written to `dist/`.
+Static output is written to `dist/`. A post-build step rewrites root-absolute asset and navigation URLs to paths relative to each file, so the site works both at the domain root and on the `https://alvsconcelos.github.io/alvsconcelos.dev/` project subpath. Canonical, hreflang, Open Graph, sitemap and JSON-LD stay as absolute `https://alvsconcelos.dev` URLs.
 
 ## GitHub Pages
 

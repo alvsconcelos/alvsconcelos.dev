@@ -27,7 +27,7 @@ const { locale, copy } = Astro.props;
           <p class="lede">{copy.hero.intro}</p>
           <div class="ctas">
             <a class="btn btn-primary" href="#contact">{copy.hero.contactCta}</a>
-            <a class="btn btn-secondary" href="#resume">{copy.hero.resumeCta}</a>
+            <a class="btn btn-secondary" href={copy.resume.pagePath}>{copy.hero.resumeCta}</a>
           </div>
         </div>
       </section>
@@ -92,6 +92,8 @@ const { locale, copy } = Astro.props;
       <section class="section close" id="resume" aria-labelledby="resume-heading">
         <h2 class="section-label" id="resume-heading">{copy.resume.heading}</h2>
         <p class="resume-row">
+          <a href={copy.resume.pagePath}>{copy.resume.pageLabel}</a>
+          <span class="sep" aria-hidden="true">·</span>
           <a href="/Alvaro-Vasconcelos-Resume-EN.pdf">{copy.resume.enLabel}</a>
           <span class="sep" aria-hidden="true">·</span>
           <a href="/Alvaro-Vasconcelos-Curriculo-PT.pdf">{copy.resume.ptLabel}</a>

@@ -4,6 +4,8 @@
 
 - [English site](https://alvsconcelos.dev/): Personal site, English
 - [Site in Portuguese](https://alvsconcelos.dev/pt/): Personal site, Portuguese (pt-BR)
+- [Resume (English)](https://alvsconcelos.dev/resume/): HTML resume
+- [Currículo (português)](https://alvsconcelos.dev/pt/curriculo/): Currículo em HTML
 - [Resume (English, PDF)](https://alvsconcelos.dev/Alvaro-Vasconcelos-Resume-EN.pdf)
 - [Currículo (português, PDF)](https://alvsconcelos.dev/Alvaro-Vasconcelos-Curriculo-PT.pdf)
 - [Full text](https://alvsconcelos.dev/llms-full.txt): Complete site content in English and Portuguese, including selected-work case details

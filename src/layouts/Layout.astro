@@ -7,11 +7,22 @@ import { site, type Copy, type Locale } from '../content/copy';
 interface Props {
   locale: Locale;
   copy: Copy;
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  langEnHref?: string;
+  langPtHref?: string;
+  current?: 'home' | 'resume';
 }
 
 const { locale, copy } = Astro.props;
-const canonical = new URL(copy.localePath, site.url).href;
-const alternate = new URL(copy.alternatePath, site.url).href;
+const title = Astro.props.title ?? copy.title;
+const description = Astro.props.description ?? copy.description;
+const langEnHref = Astro.props.langEnHref ?? '/';
+const langPtHref = Astro.props.langPtHref ?? '/pt/';
+const current = Astro.props.current ?? 'home';
+const canonical = new URL(Astro.props.canonicalPath ?? copy.localePath, site.url).href;
+const xDefault = new URL(langEnHref, site.url).href;
 const ogImage = new URL(locale === 'en' ? '/og-en.png' : '/og-pt.png', site.url).href;
 const photo = new URL(site.image, site.url).href;
 const jsonLd = {
@@ -57,16 +68,16 @@ const jsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{copy.title}</title>
-    <meta name="description" content={copy.description} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={new URL('/', site.url).href} />
-    <link rel="alternate" hreflang="pt-BR" href={new URL('/pt/', site.url).href} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', site.url).href} />
+    <link rel="alternate" hreflang="en" href={new URL(langEnHref, site.url).href} />
+    <link rel="alternate" hreflang="pt-BR" href={new URL(langPtHref, site.url).href} />
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={copy.title} />
-    <meta property="og:description" content={copy.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -74,8 +85,8 @@ const jsonLd = {
     <meta property="og:locale" content={copy.ogLocale} />
     <meta property="og:locale:alternate" content={copy.ogLocaleAlternate} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={copy.title} />
-    <meta name="twitter:description" content={copy.description} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -89,15 +100,15 @@ const jsonLd = {
       <div class="wrap header-inner">
         <a class="wordmark" href={copy.localePath}>{site.name}</a>
         <nav class="header-nav" aria-label="Primary">
-          <a href="#work">{copy.nav.work}</a>
-          <a href="#now">{copy.nav.now}</a>
-          <a href="#resume">{copy.nav.resume}</a>
-          <a href="#contact">{copy.nav.contact}</a>
+          <a href={`${copy.localePath}#work`}>{copy.nav.work}</a>
+          <a href={`${copy.localePath}#now`}>{copy.nav.now}</a>
+          <a href={copy.resume.pagePath} aria-current={current === 'resume' ? 'page' : undefined}>{copy.nav.resume}</a>
+          <a href={`${copy.localePath}#contact`}>{copy.nav.contact}</a>
         </nav>
         <div class="lang" aria-label="Language">
-          <a href="/" lang="en" aria-current={locale === 'en' ? 'true' : undefined}>EN</a>
+          <a href={langEnHref} lang="en" aria-current={locale === 'en' ? 'true' : undefined}>EN</a>
           <span class="sep" aria-hidden="true">/</span>
-          <a href="/pt/" lang="pt-BR" aria-current={locale === 'pt' ? 'true' : undefined}>PT</a>
+          <a href={langPtHref} lang="pt-BR" aria-current={locale === 'pt' ? 'true' : undefined}>PT</a>
         </div>
       </div>
     </header>

@@ -46,6 +46,9 @@ export type Copy = {
   now: { heading: string; text: string };
   resume: {
     heading: string;
+    pageLabel: string;
+    pagePath: string;
+    pdfLabel: string;
     enLabel: string;
     ptLabel: string;
   };
@@ -81,7 +84,7 @@ export const copy: Record<Locale, Copy> = {
       intro:
         'From Brazil, I lead a remote engineering team for a US company. I stay close to the code, and I care most about the platforms and ways of working that other people depend on.',
       contactCta: 'Get in touch',
-      resumeCta: 'Download resume',
+      resumeCta: 'Resume',
       photoAlt: 'Portrait of Alvaro Vasconcelos',
     },
     focus: {
@@ -174,8 +177,11 @@ export const copy: Record<Locale, Copy> = {
     },
     resume: {
       heading: 'Resume',
-      enLabel: 'Resume, English',
-      ptLabel: 'Currículo, português',
+      pageLabel: 'View resume',
+      pagePath: '/resume/',
+      pdfLabel: 'Download PDF',
+      enLabel: 'PDF, English',
+      ptLabel: 'PDF, português',
     },
     contact: {
       heading: 'Contact',
@@ -211,7 +217,7 @@ export const copy: Record<Locale, Copy> = {
       intro:
         'Do Brasil, lidero um time de engenharia remoto para uma empresa dos EUA. Continuo perto do código, e o que mais me importa são as plataformas e as formas de trabalhar das quais as outras pessoas dependem.',
       contactCta: 'Entre em contato',
-      resumeCta: 'Baixar currículo',
+      resumeCta: 'Currículo',
       photoAlt: 'Retrato de Alvaro Vasconcelos',
     },
     focus: {
@@ -304,8 +310,11 @@ export const copy: Record<Locale, Copy> = {
     },
     resume: {
       heading: 'Currículo',
-      enLabel: 'Resume, English',
-      ptLabel: 'Currículo, português',
+      pageLabel: 'Ver currículo',
+      pagePath: '/pt/curriculo/',
+      pdfLabel: 'Baixar PDF',
+      enLabel: 'PDF, English',
+      ptLabel: 'PDF, português',
     },
     contact: {
       heading: 'Contato',

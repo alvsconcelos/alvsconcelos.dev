@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, type Copy, type Locale } from '../content/copy';
+import { renderMarkdown } from '../lib/markdown';
+import enMarkdown from '../content/resume-en.md?raw';
+import ptMarkdown from '../content/resume-pt.md?raw';
+
+interface Props {
+  locale: Locale;
+  copy: Copy;
+}
+
+const { locale, copy } = Astro.props;
+const markdown = locale === 'pt' ? ptMarkdown : enMarkdown;
+const body = renderMarkdown(markdown);
+const pdfHref =
+  locale === 'pt'
+    ? '/Alvaro-Vasconcelos-Curriculo-PT.pdf'
+    : '/Alvaro-Vasconcelos-Resume-EN.pdf';
+const title =
+  locale === 'pt' ? 'Currículo — Alvaro Vasconcelos' : 'Resume — Alvaro Vasconcelos';
+const description =
+  locale === 'pt'
+    ? 'Currículo de Alvaro Vasconcelos, Engineering Manager na Housecall Pro. Experiência em plataformas web, liderança técnica e engenharia com IA.'
+    : 'Resume of Alvaro Vasconcelos, Engineering Manager at Housecall Pro. Experience in web platforms, technical leadership, and AI-native engineering.';
+---
+
+<Layout
+  locale={locale}
+  copy={copy}
+  title={title}
+  description={description}
+  canonicalPath={copy.resume.pagePath}
+  langEnHref="/resume/"
+  langPtHref="/pt/curriculo/"
+  current="resume"
+>
+  <main id="content" class="wrap">
+    <article class="resume-page">
+      <header class="resume-header">
+        <p class="resume-kicker">{copy.resume.heading}</p>
+        <h1>{site.name}</h1>
+        <p class="role">{copy.hero.role}</p>
+        <p class="resume-toolbar">
+          <a class="btn btn-primary" href={pdfHref}>{copy.resume.pdfLabel}</a>
+        </p>
+      </header>
+      <div class="resume-body" set:html={body} />
+    </article>
+  </main>
+</Layout>
