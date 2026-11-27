@@ -4,6 +4,8 @@ Personal site for Alvaro Vasconcelos, Engineering Manager at Housecall Pro.
 
 English is the default at `/`. Portuguese lives at `/pt/`.
 
+The current site is a short page with collapsible selected-work cases. The previous long version is tagged `v1-long-page` and can be restored with `git checkout v1-long-page`.
+
 ## Develop
 
 ```bash

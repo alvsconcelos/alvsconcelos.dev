@@ -11,10 +11,34 @@ const browser = await chromium.launch({
 });
 
 const shots = [
-  { url: 'http://127.0.0.1:4321/', file: 'desktop-en.png', width: 1280, height: 900 },
-  { url: 'http://127.0.0.1:4321/', file: 'mobile-en.png', width: 390, height: 844 },
-  { url: 'http://127.0.0.1:4321/pt/', file: 'desktop-pt.png', width: 1280, height: 900 },
-  { url: 'http://127.0.0.1:4321/pt/', file: 'mobile-pt.png', width: 390, height: 844 },
+  {
+    url: 'http://127.0.0.1:4321/',
+    file: 'desktop-en-v2.png',
+    width: 1280,
+    height: 900,
+    expand: false,
+  },
+  {
+    url: 'http://127.0.0.1:4321/',
+    file: 'desktop-en-v2-expanded.png',
+    width: 1280,
+    height: 900,
+    expand: true,
+  },
+  {
+    url: 'http://127.0.0.1:4321/',
+    file: 'mobile-en-v2.png',
+    width: 390,
+    height: 844,
+    expand: false,
+  },
+  {
+    url: 'http://127.0.0.1:4321/pt/',
+    file: 'desktop-pt-v2.png',
+    width: 1280,
+    height: 900,
+    expand: false,
+  },
 ];
 
 for (const shot of shots) {
@@ -25,10 +49,19 @@ for (const shot of shots) {
   const page = await context.newPage();
   await page.goto(shot.url, { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForTimeout(200);
+  if (shot.expand) {
+    await page.locator('#payments').evaluate((el) => {
+      el.open = true;
+    });
+  }
+  await page.waitForTimeout(250);
   const dest = path.join(outDir, shot.file);
   await page.screenshot({ path: dest, fullPage: true, type: 'png' });
-  console.log('wrote', dest);
+  const size = await page.evaluate(() => ({
+    width: document.documentElement.clientWidth,
+    scroll: document.documentElement.scrollHeight,
+  }));
+  console.log('wrote', dest, 'scrollHeight', size.scroll);
   await context.close();
 }
 

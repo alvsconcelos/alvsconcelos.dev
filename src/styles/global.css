@@ -67,15 +67,15 @@ a:hover {
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
 h1,
 h2,
-h3,
-.lede {
+h3 {
   font-family: "Newsreader Variable", Newsreader, "Source Serif 4", Georgia, serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -191,7 +191,7 @@ main {
   grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 1.6rem 1.75rem;
   align-items: start;
-  padding: 3.4rem 0 3.6rem;
+  padding: 2.25rem 0 2.1rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -208,8 +208,8 @@ main {
 }
 
 .hero h1 {
-  margin: 0 0 0.85rem;
-  font-size: clamp(2rem, 4.4vw, 2.85rem);
+  margin: 0 0 0.55rem;
+  font-size: clamp(2rem, 4.4vw, 2.7rem);
   font-weight: 500;
 }
 
@@ -221,17 +221,12 @@ main {
 }
 
 .lede {
-  margin: 0 0 1.15rem;
-  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  margin: 0 0 1.2rem;
+  max-width: none;
+  font-size: 1.0625rem;
   font-weight: 400;
-  line-height: 1.35;
-  max-width: 28rem;
-}
-
-.location {
-  margin: 0 0 1.5rem;
-  color: var(--stone);
-  font-size: 0.98rem;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .ctas {
@@ -275,12 +270,12 @@ main {
 
 .section {
   width: 100%;
-  padding: 3.15rem 0 0;
+  padding: 1.7rem 0 0;
   padding-left: calc(5.5rem + 1.75rem);
 }
 
 .section-label {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.9rem;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -289,159 +284,140 @@ main {
 }
 
 .section p {
-  margin: 0 0 1rem;
-}
-
-.section p:last-child {
-  margin-bottom: 0;
-}
-
-.company {
-  padding: 0.4rem 0 1.6rem;
-}
-
-.company + .company {
-  border-top: 1px solid var(--line);
-  margin-top: 0.4rem;
-  padding-top: 1.6rem;
-}
-
-.company-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.25rem 1rem;
-  margin-bottom: 1.15rem;
-}
-
-.company-head h3 {
   margin: 0;
-  font-size: 1.55rem;
-  font-weight: 500;
 }
 
-.company-loc {
+.focus-list {
+  list-style: none;
   margin: 0;
-  color: var(--stone);
-  font-size: 0.92rem;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
 }
 
-.role-block + .role-block {
-  margin-top: 1.5rem;
-}
-
-.role-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.2rem 1rem;
-  margin-bottom: 0.55rem;
-}
-
-.role-head h4 {
-  margin: 0;
+.focus-list h3 {
+  margin: 0 0 0.2rem;
   font-family: "Inter Variable", Inter, system-ui, sans-serif;
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.35;
 }
 
-.dates {
+.focus-list p {
   margin: 0;
-  color: var(--stone);
-  font-size: 0.9rem;
-}
-
-.role-block ul {
-  margin: 0;
-  padding: 0 0 0 1.1rem;
-}
-
-.role-block li {
-  margin: 0 0 0.4rem;
-  padding-left: 0.15rem;
-}
-
-.role-block li::marker {
-  color: var(--stone-brand);
-}
-
-.projects {
-  display: grid;
-  gap: 1.75rem;
-  margin-top: 1.5rem;
-}
-
-.project h3 {
-  margin: 0 0 0.3rem;
-  font-size: 1.35rem;
-  font-weight: 500;
-}
-
-.project-meta {
-  margin: 0 0 0.7rem;
-  color: var(--stone);
-  font-size: 0.9rem;
-}
-
-.project p {
-  margin: 0 0 0.55rem;
-}
-
-.stats {
-  font-weight: 500;
   color: var(--ink);
 }
 
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.15rem;
-  margin: 0.7rem 0 0;
-  font-size: 0.95rem;
-}
-
-.download-list {
-  list-style: none;
-  margin: 1.2rem 0 0;
-  padding: 0;
+.cases {
   border-top: 1px solid var(--line);
 }
 
-.download-list li {
+.case {
   border-bottom: 1px solid var(--line);
 }
 
-.download-list a {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+.case summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.9rem;
+  align-items: start;
   padding: 0.9rem 0;
-  color: var(--ink);
-  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+}
+
+.case summary::-webkit-details-marker,
+.case summary::marker {
+  display: none;
+}
+
+.case summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.case-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.case-title {
+  font-family: "Newsreader Variable", Newsreader, Georgia, serif;
+  font-optical-sizing: auto;
+  font-size: 1.2rem;
   font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
-.download-list a:hover {
-  color: var(--accent);
-}
-
-.download-list .meta {
+.case-summary {
   color: var(--stone);
-  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.case-toggle {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.45rem;
+  border-right: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.case[open] .case-toggle {
+  transform: rotate(225deg);
+  margin-top: 0.55rem;
+}
+
+.case-body {
+  padding: 0 0 1.15rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.case-body p strong {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin-top: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.resume-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  align-items: baseline;
+}
+
+.resume-row .sep {
+  color: var(--line);
 }
 
 .contact-list {
   list-style: none;
-  margin: 1.2rem 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .contact-list li {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.4rem;
 }
 
 .contact-list span {
@@ -451,9 +427,13 @@ main {
   font-size: 0.92rem;
 }
 
+.section.close {
+  padding-top: 1.7rem;
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 1.4rem 0 2.2rem;
+  padding: 1.2rem 0 1.8rem;
   color: var(--stone);
   font-size: 0.88rem;
 }
@@ -497,8 +477,8 @@ main {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
-    padding: 2.2rem 0 2.5rem;
+    gap: 1.1rem;
+    padding: 1.8rem 0 1.9rem;
   }
 
   .portrait {
@@ -511,7 +491,11 @@ main {
   }
 
   .section {
-    padding-top: 2.5rem;
+    padding-top: 1.7rem;
     padding-left: 0;
+  }
+
+  .section.close {
+    padding-top: 1.5rem;
   }
 }

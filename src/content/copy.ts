@@ -9,26 +9,19 @@ export const site = {
 
 export type Locale = 'en' | 'pt';
 
-export type Role = {
+export type Focus = {
   title: string;
-  dates: string;
-  bullets: string[];
+  text: string;
 };
 
-export type Company = {
-  name: string;
-  location: string;
-  roles: Role[];
-};
-
-export type Project = {
-  name: string;
-  role: string;
-  dates: string;
-  description: string;
-  stats: string;
-  site: { href: string; label: string };
-  code: { href: string; label: string };
+export type CaseBlock = {
+  id: string;
+  title: string;
+  summary: string;
+  problem: string;
+  did: string;
+  outcome: string;
+  links?: { href: string; label: string }[];
 };
 
 export type Copy = {
@@ -37,39 +30,32 @@ export type Copy = {
   ogLocaleAlternate: string;
   localePath: string;
   alternatePath: string;
-  switchToLabel: string;
-  switchToLang: string;
   title: string;
   description: string;
   skip: string;
-  nav: { about: string; experience: string; openSource: string; ai: string; resume: string; contact: string };
+  nav: { work: string; now: string; resume: string; contact: string };
   hero: {
     role: string;
-    lede: string;
-    location: string;
+    intro: string;
     contactCta: string;
     resumeCta: string;
     photoAlt: string;
   };
-  about: { heading: string; paragraphs: string[] };
-  experience: { heading: string; companies: Company[] };
-  openSource: { heading: string; intro: string; projects: Project[] };
-  ai: { heading: string; paragraphs: string[] };
+  focus: { heading: string; items: Focus[] };
+  work: { heading: string; cases: CaseBlock[] };
+  now: { heading: string; text: string };
   resume: {
     heading: string;
-    intro: string;
     enLabel: string;
-    enMeta: string;
     ptLabel: string;
-    ptMeta: string;
   };
   contact: {
     heading: string;
-    intro: string;
     emailLabel: string;
     linkedinLabel: string;
     githubLabel: string;
   };
+  caseLabels: { problem: string; did: string; outcome: string };
   footer: string;
 };
 
@@ -80,163 +66,127 @@ export const copy: Record<Locale, Copy> = {
     ogLocaleAlternate: 'pt_BR',
     localePath: '/',
     alternatePath: '/pt/',
-    switchToLabel: 'Português',
-    switchToLang: 'PT',
     title: 'Alvaro Vasconcelos — Engineering Manager at Housecall Pro',
     description:
-      'Engineering Manager at Housecall Pro. 12+ years building web platforms and AI-native engineering teams. Based in Brazil, working with US teams.',
+      'Engineering Manager at Housecall Pro. I lead a remote team from Brazil, building web platforms and AI‑native ways of working with US teams.',
     skip: 'Skip to content',
     nav: {
-      about: 'About',
-      experience: 'Experience',
-      openSource: 'Open source',
-      ai: 'AI',
+      work: 'Work',
+      now: 'Now',
       resume: 'Resume',
       contact: 'Contact',
     },
     hero: {
       role: 'Engineering Manager at Housecall Pro',
-      lede: 'I build web platforms and the AI‑native engineering teams that ship them.',
-      location: 'Ex-Staff Engineer. Based in Brazil, working with US teams. Fluent in English.',
+      intro:
+        'From Brazil, I lead a remote engineering team for a US company. I stay close to the code, and I care most about the platforms and ways of working that other people depend on.',
       contactCta: 'Get in touch',
       resumeCta: 'Download resume',
       photoAlt: 'Portrait of Alvaro Vasconcelos',
     },
-    about: {
-      heading: 'About',
-      paragraphs: [
-        "I've spent 12+ years building for the web, first as a developer, then as a tech lead, and now as an Engineering Manager. Since 2024 I've worked fully remote for Housecall Pro, a US company, on the platform behind housecallpro.com. I joined as a Senior Engineer, was promoted to Staff and then to Engineering Manager, and today I lead a team of 6 engineers.",
-        "I like building the things other people build on. At Housecall Pro I created the site's experimentation platform from scratch: the A/B testing logic that didn't exist before, and that now lets marketing run single and multi-page experiments without waiting on engineering. I was the technical lead for a go-to-market partnership with a Fortune 500 company, and I rebuilt our delivery pipeline so deploys run 3x faster, backed by a test suite we built from the ground up.",
-        'As a manager I stay close to the code. I set technical direction, write the specs, design how work is split and review a lot of code. Before Housecall Pro, I was Technical Lead at Genera, where I relaunched an e-commerce platform across four Latin American countries, delivering +30% sales and zero downtime on Black Friday.',
-        'Open source is where I learned the craft, and I still ship it. Before Genera, I was the #1 ranked IT freelancer on Workana Brazil, with 250+ projects delivered.',
+    focus: {
+      heading: 'What I do',
+      items: [
+        {
+          title: 'Lead engineering teams',
+          text: 'I lead a team of 6 engineers on housecallpro.com, working with US stakeholders. I set technical direction, design the work, and stay in the architecture and the code review.',
+        },
+        {
+          title: 'Build web platforms',
+          text: 'I build the foundations other people ship on, from experimentation and self‑serve marketing pages to the delivery pipeline behind them.',
+        },
+        {
+          title: 'Make teams AI‑native',
+          text: 'I design the shared rules, agent skills and review workflows my team uses every day, so AI gives us more room for judgment instead of replacing it.',
+        },
       ],
     },
-    experience: {
-      heading: 'Experience',
-      companies: [
+    work: {
+      heading: 'Selected work',
+      cases: [
         {
-          name: 'Housecall Pro',
-          location: 'Remote, US',
-          roles: [
+          id: 'payments',
+          title: 'Payments for four Latin American countries',
+          summary:
+            'I built in-house payment integrations when the off‑the‑shelf connectors could not be trusted in those markets. They still process payments today.',
+          problem:
+            'At Genera, the ready-made payment connectors available to us did not work well enough for Brazil, Argentina, Uruguay and Chile. It was not a problem a plugin could solve.',
+          did: 'I designed and built the payment infrastructure from scratch, with direct integrations to Pagar.me, PayU and PayPal, instead of depending on those third-party connectors.',
+          outcome:
+            'The solution I put in place still processes the company’s payments today.',
+        },
+        {
+          id: 'plugins',
+          title: 'Two WooCommerce plugins, still maintained',
+          summary:
+            'A shipping calculator that asks only for a Brazilian postal code, and a way to add several products to the cart from a single link.',
+          problem:
+            'A common point of friction in Brazilian checkout is asking shoppers for country, state and city just to calculate shipping. I also kept running into a native WooCommerce limit: the add‑to‑cart URL could not take more than one product at a time.',
+          did: 'I built and still maintain two open-source plugins. One lets the shopper type only their postal code (CEP), auto-detects the state across all 27 Brazilian states, and hides the country, state and city fields. The other extends the native add‑to‑cart URL so a single link can add several products with quantities, which is useful for campaigns, bundles and quote‑to‑cart flows, and needs no configuration. I also contribute Brazilian Portuguese translations to WordPress.',
+          outcome:
+            'The shipping plugin peaked at 2,000+ active installs on WordPress.org and has nearly 20,000 downloads. The cart plugin has 200+ active installs and a 5-star rating.',
+          links: [
             {
-              title: 'Engineering Manager',
-              dates: 'Mar 2026–Present',
-              bullets: [
-                "Lead a team of 6 engineers responsible for housecallpro.com's web platform. I own technical direction, planning, work design and code review, and stay hands-on in architecture.",
-                'Redesigned how the team builds with AI: created the shared rules, reusable agent skills and AI-assisted merge-request and review workflows used day to day with Claude Code and Cursor.',
-                'Lead the initiative to standardize components so AI agents can safely generate and review marketing pages, plus making the site readable and usable by AI agents.',
-                'Created a self-serve landing page platform with isolated preview environments, so marketing can launch campaign pages without engineering in the loop.',
-                'Architected the pricing experience revamp and split the work across 5 engineers.',
-                'Own the production resilience initiative started after a critical incident.',
-              ],
+              href: 'https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/',
+              label: 'Shipping plugin on WordPress.org',
             },
             {
-              title: 'Staff WordPress Developer',
-              dates: 'Jun 2025–Mar 2026',
-              bullets: [
-                'Technical lead for a go-to-market partnership with a Fortune 500 company. I designed the partner attribution system from scratch and delivered the referral flows, dynamic pricing and bilingual partner experience.',
-                'Introduced AI-assisted development to the codebase and set the conventions the team built on.',
-                'Designed core platform architecture adopted across the codebase: an async content-loading framework and a new settings data model.',
-                'Led site-wide performance and technical SEO work, including a 30%+ smaller global CSS footprint.',
-                "Built the team's automated testing foundation (1,000+ tests) and made it a CI quality gate.",
-              ],
+              href: 'https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil',
+              label: 'Shipping plugin on GitHub',
             },
             {
-              title: 'Senior WordPress Developer',
-              dates: 'Sep 2024–Jun 2025',
-              bullets: [
-                "Created the site's A/B testing system from scratch, enabling page-level and multi-page experiments that weren't possible before.",
-                'Rebuilt the deployment pipeline end to end, making deploys 3x faster.',
-                'Led engineering for the homepage, navigation, industry and pricing page relaunches.',
-              ],
+              href: 'https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/',
+              label: 'Cart plugin on WordPress.org',
+            },
+            {
+              href: 'https://github.com/alvsconcelos/add-multiple-product-wc-cart',
+              label: 'Cart plugin on GitHub',
             },
           ],
         },
         {
-          name: 'Genera',
-          location: '',
-          roles: [
-            {
-              title: 'Technical Lead',
-              dates: 'Mar 2022–Sep 2024',
-              bullets: [
-                'Led engineering for an internationalized e-commerce platform serving 4 Latin American countries.',
-                'Architected and shipped a new version of the platform: +30% sales and zero downtime on Black Friday.',
-                "Architected and built in-house payment infrastructure for Brazil, Argentina, Uruguay and Chile, with direct integrations to Pagar.me, PayU and PayPal. I replaced unreliable third-party connectors with a solution that still processes the company's payments today.",
-                'Designed real-time sales analytics dashboards that gave leadership live visibility into revenue across all markets.',
-              ],
-            },
-            {
-              title: 'Software Engineer',
-              dates: 'Sep 2020–Mar 2022',
-              bullets: [
-                'Built a promotions engine (virtual coupons, progressive discounts) and event-driven microservices (REST + SQS).',
-              ],
-            },
-          ],
+          id: 'ai-team',
+          title: 'How the team works with AI',
+          summary:
+            'I redesigned our day‑to‑day around shared rules, reusable agent skills and AI‑assisted review, not around a one‑off tool rollout.',
+          problem:
+            'AI is only useful to a team if it becomes a shared practice, with room for judgment, rather than something each person improvises or treats as a replacement for engineering.',
+          did: 'I designed the shared rules, reusable agent skills, and AI‑assisted merge-request and review workflows we use every day with Cursor, Claude Code and Gemini. I also brought AI‑assisted development into the codebase and set the conventions the team adopted.',
+          outcome:
+            'This is how the team works today: the rules, skills and review flow are part of the daily practice, not a side experiment.',
+        },
+        {
+          id: 'ai-platform',
+          title: 'A platform agents can build on safely',
+          summary:
+            'I am leading the work to standardize our marketing building blocks so AI agents can generate and review pages without cutting corners.',
+          problem:
+            'If agents are going to help ship marketing pages, they need a platform with clear components, and a site they can actually read and review. Without that, the work is hard to trust.',
+          did: 'I am leading the effort to standardize those components so agents can generate and review marketing pages safely, and to make the site itself readable and usable by AI agents.',
+          outcome:
+            'This is ongoing work on the platform behind housecallpro.com, alongside the team I lead.',
         },
       ],
     },
-    openSource: {
-      heading: 'Open source',
-      intro:
-        'I maintain two WooCommerce plugins on WordPress.org, and I contribute Brazilian Portuguese translations to WordPress.',
-      projects: [
-        {
-          name: 'Cálculo do frete somente com o CEP – WC Brasil',
-          role: 'Creator and maintainer',
-          dates: 'Aug 2020–Present',
-          description:
-            'An open-source WooCommerce plugin that removes a common checkout friction point in Brazil: shoppers calculate shipping by typing only their postal code (CEP). It auto-detects the state across all 27 Brazilian states and hides the country, state and city fields.',
-          stats: 'Peaked at 2,000+ active installs, with nearly 20,000 downloads.',
-          site: {
-            href: 'https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/',
-            label: 'WordPress.org',
-          },
-          code: {
-            href: 'https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil',
-            label: 'GitHub',
-          },
-        },
-        {
-          name: 'Add Multiple Products to Cart via URL for WooCommerce',
-          role: 'Creator and maintainer',
-          dates: 'Dec 2024–Present',
-          description:
-            "Extends WooCommerce's native add-to-cart URL so a single link can add several products with quantities. Useful for campaigns, bundles and quote‑to‑cart flows, and it works with zero configuration.",
-          stats: '200+ active installs, 5-star rating.',
-          site: {
-            href: 'https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/',
-            label: 'WordPress.org',
-          },
-          code: {
-            href: 'https://github.com/alvsconcelos/add-multiple-product-wc-cart',
-            label: 'GitHub',
-          },
-        },
-      ],
-    },
-    ai: {
-      heading: 'How the team works with AI',
-      paragraphs: [
-        'I redesigned how my team at Housecall Pro builds with AI. I created the shared rules, reusable agent skills and AI-assisted merge-request and review workflows we use every day with Cursor, Claude Code and Gemini.',
-        "I'm leading the move toward components and pages that AI agents can build and review safely, including standardizing the building blocks of our marketing pages and making the site readable and usable by agents. For me, AI is a way to spend more time on judgment and less on boilerplate — not a replacement for either.",
-      ],
+    now: {
+      heading: 'Now',
+      text: 'On the web platform behind housecallpro.com, I am focused on making the way we work something AI agents can build and review safely, and on the production resilience work we started after a critical incident.',
     },
     resume: {
       heading: 'Resume',
-      intro: 'A two-page résumé, available in English and Portuguese.',
       enLabel: 'Resume, English',
-      enMeta: 'PDF',
       ptLabel: 'Currículo, português',
-      ptMeta: 'PDF',
     },
     contact: {
       heading: 'Contact',
-      intro: "I'm based in Brazil and work with US teams. The best way to reach me is by email.",
       emailLabel: 'Email',
       linkedinLabel: 'LinkedIn',
       githubLabel: 'GitHub',
+    },
+    caseLabels: {
+      problem: 'The problem',
+      did: 'What I did',
+      outcome: 'The outcome',
     },
     footer: 'Alvaro Vasconcelos',
   },
@@ -246,163 +196,127 @@ export const copy: Record<Locale, Copy> = {
     ogLocaleAlternate: 'en_US',
     localePath: '/pt/',
     alternatePath: '/',
-    switchToLabel: 'English',
-    switchToLang: 'EN',
     title: 'Alvaro Vasconcelos — Engineering Manager na Housecall Pro',
     description:
-      'Engineering Manager na Housecall Pro. Mais de 12 anos construindo plataformas web e times de engenharia com IA. Moro no Brasil e trabalho com times dos EUA.',
+      'Engineering Manager na Housecall Pro. Lidero um time remoto a partir do Brasil, construindo plataformas web e formas de trabalhar com IA junto a times dos EUA.',
     skip: 'Ir para o conteúdo',
     nav: {
-      about: 'Sobre',
-      experience: 'Experiência',
-      openSource: 'Open source',
-      ai: 'IA',
+      work: 'Trabalho',
+      now: 'Agora',
       resume: 'Currículo',
       contact: 'Contato',
     },
     hero: {
       role: 'Engineering Manager na Housecall Pro',
-      lede: 'Construo plataformas web e os times de engenharia com IA que as entregam.',
-      location: 'Ex-Staff Engineer. Moro no Brasil, trabalho com times dos EUA e tenho inglês fluente.',
+      intro:
+        'Do Brasil, lidero um time de engenharia remoto para uma empresa dos EUA. Continuo perto do código, e o que mais me importa são as plataformas e as formas de trabalhar das quais as outras pessoas dependem.',
       contactCta: 'Entre em contato',
       resumeCta: 'Baixar currículo',
       photoAlt: 'Retrato de Alvaro Vasconcelos',
     },
-    about: {
-      heading: 'Sobre',
-      paragraphs: [
-        'São mais de 12 anos construindo para a web: comecei como desenvolvedor, virei tech lead e hoje sou Engineering Manager. Desde 2024 trabalho 100% remoto para a Housecall Pro, empresa americana, na plataforma por trás do housecallpro.com. Entrei como Senior Engineer, fui promovido a Staff e depois a Engineering Manager, e hoje lidero um time de 6 engenheiros.',
-        'Gosto de construir a base sobre a qual os outros constroem. Na Housecall Pro, criei do zero a plataforma de experimentação do site: a lógica de testes A/B que não existia e que hoje permite ao marketing rodar experimentos em uma ou várias páginas sem depender da engenharia. Fui o líder técnico de uma parceria comercial com uma empresa da Fortune 500 e reconstruí nosso pipeline de entrega, que ficou 3x mais rápido, apoiado numa suíte de testes que montamos do zero.',
-        'Como gestor, continuo perto do código. Defino a direção técnica, escrevo as especificações, desenho como o trabalho é dividido e reviso muito código. Antes da Housecall Pro, fui Technical Lead na Genera, onde relancei uma plataforma de e-commerce que operava em quatro países da América Latina. O resultado foi +30% em vendas e zero downtime na Black Friday.',
-        'Foi no open source que aprendi o ofício, e sigo publicando. Antes da Genera, fui o freelancer nº 1 de TI na Workana Brasil, com mais de 250 projetos entregues.',
+    focus: {
+      heading: 'O que eu faço',
+      items: [
+        {
+          title: 'Lidero times de engenharia',
+          text: 'Lidero um time de 6 engenheiros no housecallpro.com, com stakeholders nos EUA. Defino a direção técnica, desenho o trabalho e sigo presente na arquitetura e no code review.',
+        },
+        {
+          title: 'Construo plataformas web',
+          text: 'Construo as bases sobre as quais outras pessoas entregam, da experimentação e das landing pages self‑service ao pipeline de entrega por trás delas.',
+        },
+        {
+          title: 'Torno os times AI‑native',
+          text: 'Desenho as regras compartilhadas, as skills de agentes e os fluxos de revisão que meu time usa no dia a dia, para que a IA abra mais espaço para o julgamento em vez de substituí-lo.',
+        },
       ],
     },
-    experience: {
-      heading: 'Experiência',
-      companies: [
+    work: {
+      heading: 'Trabalhos selecionados',
+      cases: [
         {
-          name: 'Housecall Pro',
-          location: 'Remoto, EUA',
-          roles: [
+          id: 'payments',
+          title: 'Pagamentos em quatro países da América Latina',
+          summary:
+            'Criei integrações próprias de pagamento quando os conectores prontos não eram confiáveis nesses mercados. Elas ainda processam os pagamentos hoje.',
+          problem:
+            'Na Genera, os conectores de pagamento prontos que tínhamos à disposição não funcionavam bem o suficiente para Brasil, Argentina, Uruguai e Chile. Não era um problema que se resolvesse com um plugin.',
+          did: 'Arquitetei e desenvolvi a infraestrutura de pagamentos do zero, com integrações diretas com Pagar.me, PayU e PayPal, em vez de depender daqueles conectores de terceiros.',
+          outcome:
+            'A solução que coloquei no lugar ainda processa os pagamentos da empresa hoje.',
+        },
+        {
+          id: 'plugins',
+          title: 'Dois plugins de WooCommerce, ainda em manutenção',
+          summary:
+            'Um cálculo de frete que pede só o CEP brasileiro, e uma forma de adicionar vários produtos ao carrinho a partir de um único link.',
+          problem:
+            'Um atrito comum no checkout brasileiro é pedir país, estado e cidade só para calcular o frete. Eu também esbarrava numa limitação nativa do WooCommerce: a URL de adicionar ao carrinho não aceitava mais de um produto de cada vez.',
+          did: 'Criei e sigo mantendo dois plugins open source. Um permite que o cliente digite só o CEP, identifica automaticamente o estado nas 27 UFs e esconde os campos de país, estado e cidade. O outro amplia a URL nativa de adicionar ao carrinho para que um único link acrescente vários produtos com suas quantidades, o que serve para campanhas, kits e orçamentos que viram carrinho, e funciona sem configuração. Também contribuo com traduções do WordPress para o português.',
+          outcome:
+            'O plugin de frete chegou a mais de 2.000 instalações ativas no WordPress.org e tem quase 20 mil downloads. O plugin de carrinho tem mais de 200 instalações ativas e nota 5 estrelas.',
+          links: [
             {
-              title: 'Engineering Manager',
-              dates: 'Mar 2026–o momento',
-              bullets: [
-                'Lidero um time de 6 engenheiros responsável pela plataforma web do housecallpro.com. Cuido da direção técnica, do planejamento, do desenho do trabalho e do code review, e sigo participando da arquitetura.',
-                'Redesenhei a forma como o time trabalha com IA: criei as regras compartilhadas, skills reutilizáveis de agentes e fluxos de merge request e revisão assistidos por IA, usados no dia a dia com Claude Code e Cursor.',
-                'Lidero a iniciativa de padronizar componentes para que agentes de IA gerem e revisem páginas de marketing com segurança, e para tornar o site legível e utilizável por agentes de IA.',
-                'Criei uma plataforma self-service de landing pages com ambientes de preview isolados, para o marketing lançar páginas de campanha sem depender da engenharia.',
-                'Arquitetei a reformulação da experiência de preços e dividi a entrega entre 5 engenheiros.',
-                'Sou responsável pela iniciativa de resiliência de produção, criada após um incidente crítico.',
-              ],
+              href: 'https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/',
+              label: 'Plugin de frete no WordPress.org',
             },
             {
-              title: 'Staff WordPress Developer',
-              dates: 'Jun 2025–Mar 2026',
-              bullets: [
-                'Líder técnico de uma parceria comercial com uma empresa da Fortune 500. Desenhei do zero o sistema de atribuição de parceiros e entreguei os fluxos de indicação, a precificação dinâmica e a experiência bilíngue para o parceiro.',
-                'Introduzi o desenvolvimento assistido por IA na base de código e defini as convenções que o time passou a seguir.',
-                'Desenhei peças centrais da arquitetura da plataforma, adotadas em toda a base de código: um framework de carregamento assíncrono de conteúdo e um novo modelo de dados de configurações.',
-                'Liderei as melhorias de performance e de SEO técnico do site, incluindo um CSS global mais de 30% menor.',
-                'Montei a base de testes automatizados do time (mais de 1.000 testes) e a transformei em etapa obrigatória do CI.',
-              ],
+              href: 'https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil',
+              label: 'Plugin de frete no GitHub',
             },
             {
-              title: 'Senior WordPress Developer',
-              dates: 'Set 2024–Jun 2025',
-              bullets: [
-                'Criei do zero o sistema de testes A/B do site, permitindo experimentos em uma ou várias páginas, algo que não existia antes.',
-                'Reconstruí o pipeline de deploy de ponta a ponta, deixando os deploys 3x mais rápidos.',
-                'Liderei a engenharia dos relançamentos da home, da navegação e das páginas de segmentos e de preços.',
-              ],
+              href: 'https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/',
+              label: 'Plugin de carrinho no WordPress.org',
+            },
+            {
+              href: 'https://github.com/alvsconcelos/add-multiple-product-wc-cart',
+              label: 'Plugin de carrinho no GitHub',
             },
           ],
         },
         {
-          name: 'Genera',
-          location: '',
-          roles: [
-            {
-              title: 'Technical Lead',
-              dates: 'Mar 2022–Set 2024',
-              bullets: [
-                'Liderei a engenharia de uma plataforma de e-commerce internacionalizada, presente em 4 países da América Latina.',
-                'Arquitetei e lancei uma nova versão da plataforma: +30% em vendas e zero downtime na Black Friday.',
-                'Arquitetei e desenvolvi a infraestrutura própria de pagamentos para Brasil, Argentina, Uruguai e Chile, com integrações diretas com Pagar.me, PayU e PayPal. Substituí conectores de terceiros instáveis por uma solução que até hoje processa os pagamentos da empresa.',
-                'Criei dashboards de vendas em tempo real que deram à liderança visibilidade imediata da receita em todos os mercados.',
-              ],
-            },
-            {
-              title: 'Software Engineer',
-              dates: 'Set 2020–Mar 2022',
-              bullets: [
-                'Criei um motor de promoções (cupons virtuais, descontos progressivos) e microsserviços orientados a eventos (REST + SQS).',
-              ],
-            },
-          ],
+          id: 'ai-team',
+          title: 'Como o time trabalha com IA',
+          summary:
+            'Redesenhei o dia a dia em torno de regras compartilhadas, skills reutilizáveis de agentes e revisão assistida por IA, e não em torno de uma ferramenta isolada.',
+          problem:
+            'IA só é útil para um time se vira uma prática compartilhada, com espaço para julgamento, e não algo que cada pessoa improvisa ou trata como substituto da engenharia.',
+          did: 'Desenhei as regras compartilhadas, as skills reutilizáveis de agentes e os fluxos de merge request e revisão assistidos por IA que usamos no dia a dia com Cursor, Claude Code e Gemini. Também trouxe o desenvolvimento assistido por IA para a base de código e defini as convenções que o time adotou.',
+          outcome:
+            'É assim que o time trabalha hoje: as regras, as skills e o fluxo de revisão fazem parte da prática diária, não de um experimento à parte.',
+        },
+        {
+          id: 'ai-platform',
+          title: 'Uma plataforma em que agentes constroem com segurança',
+          summary:
+            'Lidero o trabalho de padronizar os blocos das páginas de marketing para que agentes de IA gerem e revisem páginas sem abrir mão da qualidade.',
+          problem:
+            'Se agentes vão ajudar a publicar páginas de marketing, eles precisam de uma plataforma com componentes claros, e de um site que consigam ler e revisar. Sem isso, o trabalho fica difícil de confiar.',
+          did: 'Lidero a padronização desses componentes para que agentes gerem e revisem páginas de marketing com segurança, e o trabalho de tornar o site legível e utilizável por agentes de IA.',
+          outcome:
+            'É um trabalho em andamento na plataforma por trás do housecallpro.com, junto do time que eu lidero.',
         },
       ],
     },
-    openSource: {
-      heading: 'Open source',
-      intro:
-        'Mantenho dois plugins de WooCommerce no WordPress.org e contribuo com traduções do WordPress para o português.',
-      projects: [
-        {
-          name: 'Cálculo do frete somente com o CEP – WC Brasil',
-          role: 'Criador e mantenedor',
-          dates: 'Ago 2020–o momento',
-          description:
-            'Plugin open source para WooCommerce que elimina um atrito comum no checkout brasileiro: o cliente calcula o frete digitando só o CEP. O plugin identifica automaticamente o estado (todas as 27 UFs) e esconde os campos de país, estado e cidade.',
-          stats: 'Chegou a mais de 2.000 instalações ativas, com quase 20 mil downloads.',
-          site: {
-            href: 'https://wordpress.org/plugins/calculo-do-frete-somente-com-o-cep-wc-brasil/',
-            label: 'WordPress.org',
-          },
-          code: {
-            href: 'https://github.com/alvsconcelos/calculo-do-frete-somente-com-o-cep-wc-brasil',
-            label: 'GitHub',
-          },
-        },
-        {
-          name: 'Add Multiple Products to Cart via URL for WooCommerce',
-          role: 'Criador e mantenedor',
-          dates: 'Dez 2024–o momento',
-          description:
-            'Amplia a URL nativa de adicionar ao carrinho do WooCommerce para que um único link adicione vários produtos com suas quantidades. É útil para campanhas, kits e orçamentos que viram carrinho, e funciona sem configuração.',
-          stats: 'Mais de 200 instalações ativas e nota 5 estrelas.',
-          site: {
-            href: 'https://wordpress.org/plugins/add-multiple-products-to-cart-via-url-for-woocommerce/',
-            label: 'WordPress.org',
-          },
-          code: {
-            href: 'https://github.com/alvsconcelos/add-multiple-product-wc-cart',
-            label: 'GitHub',
-          },
-        },
-      ],
-    },
-    ai: {
-      heading: 'Como o time trabalha com IA',
-      paragraphs: [
-        'Redesenhei a forma como meu time na Housecall Pro trabalha com IA. Criei as regras compartilhadas, as skills reutilizáveis de agentes e os fluxos de merge request e revisão assistidos por IA que usamos no dia a dia com Cursor, Claude Code e Gemini.',
-        'Lidero a evolução para componentes e páginas que agentes de IA conseguem construir e revisar com segurança, incluindo a padronização dos blocos das páginas de marketing e um site legível e utilizável por agentes. Para mim, IA serve para gastar mais tempo com decisões e menos com código repetitivo — não para substituir o julgamento técnico.',
-      ],
+    now: {
+      heading: 'Agora',
+      text: 'Na plataforma web por trás do housecallpro.com, meu foco é tornar a forma como trabalhamos algo que agentes de IA consigam construir e revisar com segurança, e o trabalho de resiliência de produção que começamos depois de um incidente crítico.',
     },
     resume: {
       heading: 'Currículo',
-      intro: 'Um currículo de duas páginas, disponível em inglês e em português.',
       enLabel: 'Resume, English',
-      enMeta: 'PDF',
       ptLabel: 'Currículo, português',
-      ptMeta: 'PDF',
     },
     contact: {
       heading: 'Contato',
-      intro: 'Moro no Brasil e trabalho com times dos EUA. O melhor caminho é o e-mail.',
       emailLabel: 'E-mail',
       linkedinLabel: 'LinkedIn',
       githubLabel: 'GitHub',
+    },
+    caseLabels: {
+      problem: 'O problema',
+      did: 'O que eu fiz',
+      outcome: 'O resultado',
     },
     footer: 'Alvaro Vasconcelos',
   },
